@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText txtInputGrams;
     private Button btnConvert;
     private TextView lblOutput;
+    private TextView lblOutputDaily;
 
 
 
@@ -26,19 +27,36 @@ public class MainActivity extends AppCompatActivity {
     public void checkGuess() {
         String guessText = txtInputGrams.getText().toString();
         String message = "";
+
         try {
            BigDecimal guess = new BigDecimal(guessText);
             BigDecimal TEASPOONS = new BigDecimal("0.24");
             BigDecimal answer = TEASPOONS.multiply(guess).setScale(2,1);
             message = answer + " tsp";
+            DailyValue();
 
         } catch (Exception e) {
             message = "ERROR " + e.toString();
         } finally {
             lblOutput.setText(message);
+
             txtInputGrams.requestFocus();
             txtInputGrams.selectAll();
         }
+    }
+
+    public void DailyValue(){
+        String messageTest = "";
+        try {
+            messageTest = "SEE THIS";
+        }
+        catch (Exception e) {
+            messageTest = "Error " + e.toString();
+        }
+        finally {
+            lblOutputDaily.setText(messageTest);    //this
+        }
+
     }
 
 
@@ -49,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
         txtInputGrams = (EditText) findViewById(R.id.txtInputGrams);
         btnConvert = (Button) findViewById(R.id.btnConvert);
         lblOutput = (TextView) findViewById(R.id.lblOutput);
+        lblOutputDaily = (TextView) findViewById(R.id.lblOutputDaily);
         btnConvert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
