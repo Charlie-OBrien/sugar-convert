@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText txtInputGrams;
     private Button btnConvert;
     private TextView lblOutput;
-    private int theNumber;
+
 
 
 
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
            BigDecimal guess = new BigDecimal(guessText);
             BigDecimal TEASPOONS = new BigDecimal("0.24");
             BigDecimal answer = TEASPOONS.multiply(guess).setScale(2,1);
-            message = answer + " tsp!";
+            message = answer + " tsp";
 
         } catch (Exception e) {
             message = "ERROR " + e.toString();
